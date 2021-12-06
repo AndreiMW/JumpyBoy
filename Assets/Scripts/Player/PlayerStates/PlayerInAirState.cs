@@ -5,22 +5,36 @@
 * Copyright (c) 2021 Andrei-Florin Ciobanu. All rights reserved. 
 */
 
+using UnityEngine;
+
 namespace Player.PlayerStates {
 	public sealed class PlayerInAirState : BasePlayerState {
+		private float _boostDuration = 3f;
+		
+		/// <inheritdoc />
 		public override void EnterState(PlayerManager player) {
-			throw new System.NotImplementedException();
+			player.SetInAirConstraints();
 		}
 
+		/// <inheritdoc />
 		public override void UpdateState(PlayerManager player) {
-			throw new System.NotImplementedException();
+			if (Input.GetMouseButtonDown(0) && this._boostDuration > 0) {
+				player.Boost();
+				Debug.Log("Boosting");
+				this._boostDuration -= Time.deltaTime;
+			}
 		}
 
-		public override void OnTriggerEnter(PlayerManager player) {
+		/// <inheritdoc />
+		public override void OnTriggerEnter(Collider other, PlayerManager player) {
 			throw new System.NotImplementedException();
 		}
-
-		public override void OnCollisionEnter(PlayerManager player) {
-			throw new System.NotImplementedException();
+		
+		/// <inheritdoc />
+		public override void OnCollisionEnter(Collision other, PlayerManager player) {
+			if (other.collider.CompareTag("Ground")) {
+				player.SwitchState(player.LandedState);
+			}
 		}
 	}
 }
