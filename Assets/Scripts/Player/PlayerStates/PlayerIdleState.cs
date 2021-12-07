@@ -6,6 +6,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Player.PlayerStates {
 	public sealed class PlayerIdleState : BasePlayerState {
@@ -20,6 +21,9 @@ namespace Player.PlayerStates {
 		/// <inheritdoc />
 		public override void UpdateState(PlayerManager player) {
 			if (Input.GetMouseButtonDown(0) && !this._hasTouchedScreen) {
+				if (EventSystem.current.IsPointerOverGameObject()) {
+					return;
+				}
 				this._hasTouchedScreen = true;
 				player.PushPlayerToRamp();
 				player.SwitchState(player.OnRampState);
