@@ -20,6 +20,12 @@ namespace Player.PlayerStates {
 		/// </summary>
 		/// <param name="player">The player controller.</param>
 		public abstract void UpdateState(PlayerManager player);
+
+		/// <summary>
+		/// Method for state to handle fixed update loops.
+		/// </summary>
+		/// <param name="player">The player controller.</param>
+		public abstract void FixedUpdateState(PlayerManager player);
 		
 		/// <summary>
 		/// Method for the state to handle trigger entering.
