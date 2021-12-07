@@ -21,6 +21,14 @@ namespace Managers {
 		[SerializeField] 
 		private Text _scoreText;
 
+		[SerializeField] 
+		private Text _rampLevelText;
+		
+		[SerializeField] 
+		private Text _boostLevelText;
+		
+		#region Public
+		
 		/// <summary>
 		/// Set the fill amount for the boost left.
 		/// </summary>
@@ -36,6 +44,24 @@ namespace Managers {
 		public void SetDistanceScore(float distance) {
 			this._scoreText.text = ((int) distance).ToString();
 		}
+
+		/// <summary>
+		/// Set ramp level text.
+		/// </summary>
+		/// <param name="rampLevel">The ramp level.</param>
+		public void SetRampLevel(int rampLevel) {
+			this._rampLevelText.text = rampLevel == 10 ? "MAX" : $"LEVEL {rampLevel}";
+		}
+		
+		/// <summary>
+		/// Set boost level text.
+		/// </summary>
+		/// <param name="boostLevel">The boost level.</param>
+		public void SetBoostLevel(int boostLevel) {
+			this._boostLevelText.text = boostLevel == 10 ? "MAX" : $"LEVEL {boostLevel}";
+		}
+		
+		#endregion
 		
 	}
 }
