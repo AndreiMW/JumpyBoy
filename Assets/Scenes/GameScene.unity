@@ -1787,6 +1787,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rocketBoostView: {fileID: 686094213}
   _scoreText: {fileID: 1204017561}
+  _tapToStart: {fileID: 1539510693}
+  _upgradeRampButton: {fileID: 70599644}
+  _upgradeBoostButton: {fileID: 1239573710}
   _rampLevelText: {fileID: 1037858010}
   _boostLevelText: {fileID: 1611589198}
 --- !u!4 &1504502506
