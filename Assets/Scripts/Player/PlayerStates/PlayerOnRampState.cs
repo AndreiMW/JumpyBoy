@@ -7,12 +7,18 @@
 
 using UnityEngine;
 
+using Managers;
+
 namespace Player.PlayerStates { 
 	public sealed class PlayerOnRampState : BasePlayerState {
 		private bool _shouldBoost = false;
-		
+		private int _rampLevel;
+
 		/// <inheritdoc />
-		public override void EnterState(PlayerManager player) { }
+		public override void EnterState(PlayerManager player) {
+			this._rampLevel = GameManager.Instance.RampBoostLevel;
+			UIManager.Instance.HideUI();
+		}
 
 		/// <inheritdoc />
 		public override void UpdateState(PlayerManager player) { }
@@ -20,7 +26,7 @@ namespace Player.PlayerStates {
 		/// <inheritdoc />
 		public override void FixedUpdateState(PlayerManager player) {
 			if (this._shouldBoost) {
-				player.Rigidbody.AddForce(player.Rigidbody.transform.forward * (Time.fixedDeltaTime * (player.Rigidbody.mass * 20f)), ForceMode.Impulse);
+				player.Rigidbody.AddForce(player.Rigidbody.transform.forward * (Time.fixedDeltaTime * this._rampLevel * 200f), ForceMode.Impulse);
 			}
 		}
 
