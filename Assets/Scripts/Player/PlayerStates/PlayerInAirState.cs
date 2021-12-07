@@ -7,6 +7,7 @@
 
 using UnityEngine;
 
+using Distance;
 using Managers;
 
 namespace Player.PlayerStates {
@@ -25,6 +26,8 @@ namespace Player.PlayerStates {
 
 		/// <inheritdoc />
 		public override void FixedUpdateState(PlayerManager player) {
+			UIManager.Instance.SetDistanceScore(player.transform.position.CalculateDistanceTo(GameManager.Instance.DistanceStartPosition));
+			
 			if (Input.GetMouseButton(0) && this._currentDuration > 0) {
 				player.Boost();
 				Debug.Log("Boosting");
