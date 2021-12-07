@@ -23,6 +23,10 @@ namespace Player {
 		private RigidbodyConstraints _originalConstraints;
 
 		private Vector3 _originalPosition;
+		
+		[SerializeField]
+		private WheelCollider[] _wheels;
+		
 
 		#region Lifecycle
 
@@ -72,6 +76,10 @@ namespace Player {
 		/// </summary>
 		public void PushPlayerToRamp() {
 			//push player to ramp
+			foreach (WheelCollider wheel in this._wheels) {
+				wheel.motorTorque = 0.000001f;
+			}			
+			this._rigidbody.AddForce(this.transform.forward * (Time.deltaTime * 500 * this._rigidbody.mass), ForceMode.Impulse);
 		}
 		
 		/// <summary>
@@ -98,7 +106,7 @@ namespace Player {
 		/// Set x rotation constraint to the rigidbody so the player keeps the angle he had while leaving the ramp.
 		/// </summary>
 		public void SetInAirConstraints() {
-			this._rigidbody.constraints = RigidbodyConstraints.FreezeRotationX;
+			this._rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 		}
 
 		/// <summary>
@@ -114,6 +122,11 @@ namespace Player {
 		public void Reset() {
 			this.transform.position = this._originalPosition;
 			this._rigidbody.drag = 0f;
+			this._rigidbody.velocity = Vector3.zero;
+			
+			foreach (WheelCollider wheel in this._wheels) {
+				wheel.motorTorque = 0f;
+			}
 		}
 
 		#endregion
