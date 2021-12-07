@@ -12,13 +12,15 @@ using Managers;
 
 namespace Player.PlayerStates {
 	public sealed class PlayerInAirState : BasePlayerState {
-		private float _maxBoostDuration = 3f;
+		private float _maxBoostDuration;
 		private float _currentDuration;
 		
 		/// <inheritdoc />
 		public override void EnterState(PlayerManager player) {
 			player.SetInAirConstraints();
+			this._maxBoostDuration = GameManager.Instance.BoostDurationLevel / 2f;
 			this._currentDuration = this._maxBoostDuration;
+			Debug.Log(this._currentDuration);
 		}
 
 		/// <inheritdoc />
@@ -28,7 +30,7 @@ namespace Player.PlayerStates {
 		public override void FixedUpdateState(PlayerManager player) {
 			UIManager.Instance.SetDistanceScore(player.transform.position.CalculateDistanceTo(GameManager.Instance.DistanceStartPosition));
 			
-			if (Input.GetMouseButton(0) && this._currentDuration > 0) {
+			if (Input.GetMouseButton(0) && this._currentDuration > 0.0f) {
 				player.Boost();
 				Debug.Log("Boosting");
 				this._currentDuration -= Time.fixedDeltaTime;
