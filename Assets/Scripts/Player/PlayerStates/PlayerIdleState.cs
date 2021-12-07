@@ -13,6 +13,7 @@ namespace Player.PlayerStates {
 
 		/// <inheritdoc />
 		public override  void EnterState(PlayerManager player) {
+			this._hasTouchedScreen = false;
 			player.Reset();
 		}
 
