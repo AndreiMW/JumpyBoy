@@ -14,7 +14,7 @@ namespace Player.PlayerStates {
 	public sealed class PlayerLandedState : BasePlayerState {
 
 		/// <inheritdoc />
-		public override async void EnterState(PlayerManager player) {
+		public override void EnterState(PlayerManager player) {
 			player.ResetConstraints();
 			player.Slow();
 		}
