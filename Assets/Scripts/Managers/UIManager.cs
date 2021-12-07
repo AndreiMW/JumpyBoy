@@ -37,6 +37,15 @@ namespace Managers {
 		
 		[SerializeField]
 		private Text _boostLevelText;
+		
+		#region Lifecycle
+
+		private void Start() {
+			this.SetRampLevel(UserSettings.Instance.RampLevel);
+			this.SetBoostLevel(UserSettings.Instance.BoostLevel);
+		}
+		
+		#endregion
 
 		#region Public
 		

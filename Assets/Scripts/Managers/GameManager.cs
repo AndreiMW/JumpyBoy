@@ -5,6 +5,7 @@
  * Copyright (c) 2021 Andrei-Florin Ciobanu. All rights reserved. 
  */
 
+using System;
 using UnityEngine;
 
 namespace Managers {
@@ -16,11 +17,20 @@ namespace Managers {
 		private Transform _distanceStartPosition;
 		public Vector3 DistanceStartPosition => this._distanceStartPosition.position;
 
-		private int _rampBoostLevel = 1;
+		private int _rampBoostLevel;
 		public int RampBoostLevel => this._rampBoostLevel;
-		
-		private int _boostDurationLevel = 1;
+
+		private int _boostDurationLevel;
 		public int BoostDurationLevel => this._boostDurationLevel;
+		
+		#region Lifecycle
+
+		private void Awake() {
+			this._rampBoostLevel = UserSettings.Instance.RampLevel;
+			this._boostDurationLevel = UserSettings.Instance.BoostLevel;
+		}
+
+		#endregion
 		
 		#region Public
 
@@ -32,6 +42,7 @@ namespace Managers {
 				return;
 			}
 			this._rampBoostLevel++;
+			UserSettings.Instance.RampLevel = this._rampBoostLevel;
 			UIManager.Instance.SetRampLevel(this._rampBoostLevel);
 		}
 		
@@ -43,6 +54,7 @@ namespace Managers {
 				return;
 			}
 			this._boostDurationLevel++;
+			UserSettings.Instance.BoostLevel = this._boostDurationLevel;
 			UIManager.Instance.SetBoostLevel(this._boostDurationLevel);
 		}
 		
