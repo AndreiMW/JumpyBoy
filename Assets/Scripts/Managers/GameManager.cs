@@ -7,6 +7,13 @@
 
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-	
+namespace Managers {
+	public class GameManager : MonoBehaviour {
+		private static GameManager s_instace;
+		public static GameManager Instance => s_instace ?? (s_instace = FindObjectOfType<GameManager>());
+
+		[SerializeField] private Transform _distanceStartPosition;
+
+		public Vector3 DistanceStartPosition => this._distanceStartPosition.position;
+	}
 }
