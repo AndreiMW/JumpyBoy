@@ -8,6 +8,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+using DG.Tweening;
+
 using UI.RocketBoost;
 
 namespace Managers {
@@ -21,12 +23,21 @@ namespace Managers {
 		[SerializeField] 
 		private Text _scoreText;
 
+		[SerializeField]
+		private CanvasGroup _tapToStart;
+
 		[SerializeField] 
+		private CanvasGroup _upgradeRampButton;
+		
+		[SerializeField]
+		private CanvasGroup _upgradeBoostButton;
+		
+		[SerializeField]
 		private Text _rampLevelText;
 		
-		[SerializeField] 
+		[SerializeField]
 		private Text _boostLevelText;
-		
+
 		#region Public
 		
 		/// <summary>
@@ -59,6 +70,24 @@ namespace Managers {
 		/// <param name="boostLevel">The boost level.</param>
 		public void SetBoostLevel(int boostLevel) {
 			this._boostLevelText.text = boostLevel == 10 ? "MAX" : $"LEVEL {boostLevel}";
+		}
+
+		/// <summary>
+		/// Hide preliminary UI.
+		/// </summary>
+		public void HideUI() {
+			this._tapToStart.DOFade(0f, 0.5f);
+			this._upgradeRampButton.DOFade(0f, 0.5f);
+			this._upgradeBoostButton.DOFade(0f, 0.5f);
+		}
+
+		/// <summary>
+		/// Show UI.
+		/// </summary>
+		public void ShowUI() {
+			this._tapToStart.DOFade(1f, 0.5f);
+			this._upgradeRampButton.DOFade(1f, 0.5f);
+			this._upgradeBoostButton.DOFade(1f, 0.5f);
 		}
 		
 		#endregion
