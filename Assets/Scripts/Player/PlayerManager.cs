@@ -5,9 +5,9 @@
  * Copyright (c) 2021 Andrei-Florin Ciobanu. All rights reserved. 
  */
 
-using System;
-using Player.PlayerStates;
 using UnityEngine;
+
+using Player.PlayerStates;
 
 namespace Player {
 	public class PlayerManager : MonoBehaviour {
@@ -91,7 +91,7 @@ namespace Player {
 		/// Boost the player.
 		/// </summary>
 		public void Boost() {
-			this._rigidbody.AddForce(this.transform.forward * (Time.fixedDeltaTime * this._rigidbody.mass), ForceMode.Impulse);
+			this._rigidbody.AddForce(this.transform.forward * (Time.fixedDeltaTime * 20f * this._rigidbody.mass), ForceMode.Impulse);
 		}
 
 		/// <summary>
@@ -99,7 +99,7 @@ namespace Player {
 		/// </summary>
 		public void Slow() {
 			//set drag to 1 to slow down faster
-			this._rigidbody.drag = 1f;
+			this._rigidbody.drag = 0.25f;
 			
 			//set y velocity to 0 to avoid bounce on landing
 			Vector3 rigidbodyVelocity = this._rigidbody.velocity;
