@@ -18,7 +18,7 @@ namespace Player.PlayerStates {
 
 		/// <inheritdoc />
 		public override void UpdateState(PlayerManager player) {
-			if (Input.GetMouseButtonDown(0) && this._boostDuration > 0) {
+			if (Input.GetMouseButton(0) && this._boostDuration > 0) {
 				player.Boost();
 				Debug.Log("Boosting");
 				this._boostDuration -= Time.deltaTime;
@@ -26,9 +26,10 @@ namespace Player.PlayerStates {
 		}
 
 		/// <inheritdoc />
-		public override void OnTriggerEnter(Collider other, PlayerManager player) {
-			throw new System.NotImplementedException();
-		}
+		public override void FixedUpdateState(PlayerManager player) { }
+
+		/// <inheritdoc />
+		public override void OnTriggerEnter(Collider other, PlayerManager player) { }
 		
 		/// <inheritdoc />
 		public override void OnCollisionEnter(Collision other, PlayerManager player) {

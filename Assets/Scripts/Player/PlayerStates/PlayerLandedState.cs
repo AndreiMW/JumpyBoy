@@ -24,13 +24,12 @@ namespace Player.PlayerStates {
 		}
 
 		/// <inheritdoc />
-		public override void OnTriggerEnter(Collider other, PlayerManager player) {
-			throw new System.NotImplementedException();
-		}
+		public override void FixedUpdateState(PlayerManager player) { }
 
 		/// <inheritdoc />
-		public override void OnCollisionEnter(Collision other, PlayerManager player) {
-			throw new System.NotImplementedException();
-		}
+		public override void OnTriggerEnter(Collider other, PlayerManager player) { }
+
+		/// <inheritdoc />
+		public override void OnCollisionEnter(Collision other, PlayerManager player) { }
 	}
 }

@@ -5,6 +5,7 @@
  * Copyright (c) 2021 Andrei-Florin Ciobanu. All rights reserved. 
  */
 
+using System;
 using Player.PlayerStates;
 using UnityEngine;
 
@@ -46,6 +47,10 @@ namespace Player {
 			this._currentState.UpdateState(this);
 		}
 
+		private void FixedUpdate() {
+			this._currentState.FixedUpdateState(this);
+		}
+
 		#endregion
 	
 		#region Collision
@@ -79,14 +84,14 @@ namespace Player {
 			foreach (WheelCollider wheel in this._wheels) {
 				wheel.motorTorque = 0.000001f;
 			}			
-			this._rigidbody.AddForce(this.transform.forward * (Time.deltaTime * 500 * this._rigidbody.mass), ForceMode.Impulse);
+			this._rigidbody.AddForce(this.transform.forward * (Time.fixedDeltaTime * 500 * this._rigidbody.mass), ForceMode.Impulse);
 		}
 		
 		/// <summary>
 		/// Boost the player.
 		/// </summary>
 		public void Boost() {
-			//boost
+			this._rigidbody.AddForce(this.transform.forward * (Time.fixedDeltaTime * this._rigidbody.mass), ForceMode.Impulse);
 		}
 
 		/// <summary>

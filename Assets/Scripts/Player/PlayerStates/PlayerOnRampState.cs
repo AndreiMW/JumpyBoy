@@ -12,14 +12,15 @@ namespace Player.PlayerStates {
 		private bool _shouldBoost = false;
 		
 		/// <inheritdoc />
-		public override void EnterState(PlayerManager player) {
-			throw new System.NotImplementedException();
-		}
+		public override void EnterState(PlayerManager player) { }
 
 		/// <inheritdoc />
-		public override void UpdateState(PlayerManager player) {
+		public override void UpdateState(PlayerManager player) { }
+
+		/// <inheritdoc />
+		public override void FixedUpdateState(PlayerManager player) {
 			if (this._shouldBoost) {
-				player.Rigidbody.AddForce(player.Rigidbody.transform.forward * (Time.deltaTime * (player.Rigidbody.mass * 20f)), ForceMode.Impulse);
+				player.Rigidbody.AddForce(player.Rigidbody.transform.forward * (Time.fixedDeltaTime * (player.Rigidbody.mass * 20f)), ForceMode.Impulse);
 			}
 		}
 
@@ -36,8 +37,6 @@ namespace Player.PlayerStates {
 		}
 
 		/// <inheritdoc />
-		public override void OnCollisionEnter(Collision other, PlayerManager player) {
-			throw new System.NotImplementedException();
-		}
+		public override void OnCollisionEnter(Collision other, PlayerManager player) { }
 	}
 }
