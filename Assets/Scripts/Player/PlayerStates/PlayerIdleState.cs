@@ -8,6 +8,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+using Managers;
+
 namespace Player.PlayerStates {
 	public sealed class PlayerIdleState : BasePlayerState {
 		private bool _hasTouchedScreen;
@@ -16,6 +18,8 @@ namespace Player.PlayerStates {
 		public override  void EnterState(PlayerManager player) {
 			this._hasTouchedScreen = false;
 			player.Reset();
+			UIManager.Instance.ShowUI();
+			UIManager.Instance.SetBoostAmount(1f);
 		}
 
 		/// <inheritdoc />
