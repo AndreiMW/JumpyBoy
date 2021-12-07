@@ -25,8 +25,12 @@ namespace UI.RocketBoost {
 	
 		#region Public
 
-		public void SetFillAmount(float fillAmount) {
-			this._durationFillImage.fillAmount = fillAmount;
+		/// <summary>
+		/// Set the fill amount for the boost left.
+		/// </summary>
+		/// <param name="boostAmount">The available boost amoount.</param>
+		public void SetBoostAmount(float boostAmount) {
+			this._durationFillImage.fillAmount = boostAmount;
 		}
 	
 		#endregion
