@@ -5,9 +5,11 @@
  * Copyright (c) 2021 Andrei-Florin Ciobanu. All rights reserved. 
  */
 
-using Car;
 using UnityEngine;
 
+using DG.Tweening;
+
+using Car;
 using Player.PlayerStates;
 
 namespace Player {
@@ -28,11 +30,19 @@ namespace Player {
 
 		[SerializeField]
 		private CarManager _carManager;
-		
+
+		[SerializeField] 
+		private Animator _playerAnimator;
+
+		private readonly int _blendSpeedHash = Animator.StringToHash("BlendSpeed");
+		private float _blendSpeed {
+			get =>  this._playerAnimator.GetFloat(this._blendSpeedHash);
+			set => this._playerAnimator.SetFloat(this._blendSpeedHash, value);
+		}
 		
 		#region Lifecycle
 
-		private void Start() {
+		private async void Start() {
 			this._rigidbody = this.GetComponent<Rigidbody>();
 			//get original RigidBody constraints (pre ramp jumping)
 			this._originalConstraints = this._rigidbody.constraints;
@@ -128,6 +138,18 @@ namespace Player {
 			this._rigidbody.drag = 0f;
 			this._rigidbody.velocity = Vector3.zero;
 			this._carManager.SetMotorTorqueValue(0f);
+		}
+
+		public void BlendDrivingAnimation() {
+			DOTween.To(() => this._blendSpeed, value => _blendSpeed = value, 0.5f, 1f);
+		}
+		
+		public void BlendCheerAnimation() {
+			DOTween.To(() => _blendSpeed, value => _blendSpeed = value, 1f, 1f);
+		}
+		
+		public void BlendClapAnimation() {
+			this._blendSpeed = 0f;
 		}
 
 		#endregion
