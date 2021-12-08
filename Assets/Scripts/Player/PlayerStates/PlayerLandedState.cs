@@ -17,6 +17,7 @@ namespace Player.PlayerStates {
 		public override void EnterState(PlayerManager player) {
 			player.ResetConstraints();
 			player.Slow();
+			player.BlendCheerAnimation();
 		}
 
 		/// <inheritdoc />
