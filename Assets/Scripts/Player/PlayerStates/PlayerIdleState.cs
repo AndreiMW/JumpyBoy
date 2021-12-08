@@ -20,14 +20,21 @@ namespace Player.PlayerStates {
 			player.Reset();
 			UIManager.Instance.ShowUI();
 			UIManager.Instance.SetBoostAmount(1f);
+			player.BlendClapAnimation();
 		}
 
 		/// <inheritdoc />
 		public override void UpdateState(PlayerManager player) {
 			if (Input.GetMouseButtonDown(0) && !this._hasTouchedScreen) {
+#if UNITY_EDITOR
 				if (EventSystem.current.IsPointerOverGameObject()) {
 					return;
 				}
+#else
+				if (EventSystem.current.IsPointerOverGameObject(Input.touches[0].fingerId)) {
+					return;
+				}
+#endif
 				this._hasTouchedScreen = true;
 				player.PushPlayerToRamp();
 				player.SwitchState(player.OnRampState);
