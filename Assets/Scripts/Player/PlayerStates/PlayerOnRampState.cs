@@ -18,6 +18,7 @@ namespace Player.PlayerStates {
 		public override void EnterState(PlayerManager player) {
 			this._rampLevel = GameManager.Instance.RampBoostLevel;
 			UIManager.Instance.HideUI();
+			player.BlendDrivingAnimation();
 		}
 
 		/// <inheritdoc />
