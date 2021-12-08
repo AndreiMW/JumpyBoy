@@ -34,6 +34,9 @@ namespace Player.PlayerStates {
 				Debug.Log("Boosting");
 				this._currentDuration -= Time.fixedDeltaTime;
 				UIManager.Instance.SetBoostAmount(this._currentDuration / this._maxBoostDuration);
+				CameraFollow.Instace.BoostEffect(true);
+			} else {
+				CameraFollow.Instace.BoostEffect(false);
 			}
 		}
 
