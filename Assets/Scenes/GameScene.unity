@@ -713,8 +713,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463881202}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 3.49, z: -4.99}
+  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 4.394001, z: -6.406001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2133033589}
@@ -1374,6 +1374,12 @@ Transform:
   m_Father: {fileID: 2133033589}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1068274719 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2561115569648305211, guid: 152222faea8ae6d47a3fbdb09bc74214,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133033585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1099022391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8079958527287011626, guid: 152222faea8ae6d47a3fbdb09bc74214,
@@ -2238,3 +2244,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carManager: {fileID: 901490580}
+  _playerAnimator: {fileID: 1068274719}
