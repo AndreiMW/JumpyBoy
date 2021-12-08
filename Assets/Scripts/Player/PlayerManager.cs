@@ -5,6 +5,7 @@
  * Copyright (c) 2021 Andrei-Florin Ciobanu. All rights reserved. 
  */
 
+using Car;
 using UnityEngine;
 
 using Player.PlayerStates;
@@ -24,11 +25,11 @@ namespace Player {
 		private RigidbodyConstraints _originalConstraints;
 
 		private Vector3 _originalPosition;
-		
-		[SerializeField]
-		private WheelCollider[] _wheels;
-		
 
+		[SerializeField]
+		private CarManager _carManager;
+		
+		
 		#region Lifecycle
 
 		private void Start() {
@@ -81,9 +82,7 @@ namespace Player {
 		/// </summary>
 		public void PushPlayerToRamp() {
 			//push player to ramp
-			foreach (WheelCollider wheel in this._wheels) {
-				wheel.motorTorque = 0.000001f;
-			}			
+			this._carManager.SetMotorTorqueValue(0.000001f);			
 			this._rigidbody.AddForce(this.transform.forward * (Time.fixedDeltaTime * 500 * this._rigidbody.mass), ForceMode.Impulse);
 		}
 		
@@ -128,10 +127,7 @@ namespace Player {
 			this.transform.position = this._originalPosition;
 			this._rigidbody.drag = 0f;
 			this._rigidbody.velocity = Vector3.zero;
-			
-			foreach (WheelCollider wheel in this._wheels) {
-				wheel.motorTorque = 0f;
-			}
+			this._carManager.SetMotorTorqueValue(0f);
 		}
 
 		#endregion

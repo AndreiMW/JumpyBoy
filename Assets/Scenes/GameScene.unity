@@ -631,6 +631,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 149103780}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &240323014 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3700459741600446793, guid: 152222faea8ae6d47a3fbdb09bc74214,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133033585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &463881202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,6 +1167,32 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5355a6349547df445b261ac92a8191b7, type: 3}
+--- !u!1 &901490579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7183681929512222414, guid: 152222faea8ae6d47a3fbdb09bc74214,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133033585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &901490580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901490579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e7a455075d4e95a72eee963075f319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frontLeftWheelTransform: {fileID: 1099022391}
+  _frontRightWheelTransform: {fileID: 1335310342}
+  _backLeftWheelTransform: {fileID: 240323014}
+  _backRightWheelTransform: {fileID: 1381684434}
+  _frontLeftWheelCollider: {fileID: 692293048}
+  _frontRightWheelCollider: {fileID: 1269696193}
+  _backLeftWheelCollider: {fileID: 646649591}
+  _backRightWheelCollider: {fileID: 1422844369}
 --- !u!1001 &933108531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1342,6 +1374,12 @@ Transform:
   m_Father: {fileID: 2133033589}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1099022391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8079958527287011626, guid: 152222faea8ae6d47a3fbdb09bc74214,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133033585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1154973904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1685,12 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!4 &1335310342 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6145063940201104851, guid: 152222faea8ae6d47a3fbdb09bc74214,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133033585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1347925161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,6 +1739,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1381684434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2680993021699028341, guid: 152222faea8ae6d47a3fbdb09bc74214,
+    type: 3}
+  m_PrefabInstance: {fileID: 2133033585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1422844367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,6 +2112,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6145063940201104851, guid: 152222faea8ae6d47a3fbdb09bc74214,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7183681928102396018, guid: 152222faea8ae6d47a3fbdb09bc74214,
         type: 3}
       propertyPath: m_RootOrder
@@ -2182,8 +2237,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98717a5b70f92ac4d94af5127541c0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheels:
-  - {fileID: 1422844369}
-  - {fileID: 1269696193}
-  - {fileID: 692293048}
-  - {fileID: 646649591}
+  _carManager: {fileID: 901490580}
