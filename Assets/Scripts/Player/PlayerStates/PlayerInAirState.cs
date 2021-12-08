@@ -20,7 +20,6 @@ namespace Player.PlayerStates {
 			player.SetInAirConstraints();
 			this._maxBoostDuration = GameManager.Instance.BoostDurationLevel / 2f;
 			this._currentDuration = this._maxBoostDuration;
-			Debug.Log(this._currentDuration);
 		}
 
 		/// <inheritdoc />
