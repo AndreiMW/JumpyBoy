@@ -23,6 +23,12 @@ namespace Managers {
 		private int _boostDurationLevel;
 		public int BoostDurationLevel => this._boostDurationLevel;
 		
+		[HideInInspector]
+		public int BoostUpgradesAvailable = 0;
+
+		[HideInInspector]
+		public int RampUpgradesAvailable = 0;
+		
 		#region Lifecycle
 
 		private void Awake() {
@@ -42,8 +48,13 @@ namespace Managers {
 				return;
 			}
 			this._rampBoostLevel++;
+			this.RampUpgradesAvailable--;
 			UserSettings.Instance.RampLevel = this._rampBoostLevel;
 			UIManager.Instance.SetRampLevel(this._rampBoostLevel);
+
+			if (this.RampUpgradesAvailable < 1) {
+				UIManager.Instance.SetUpgradeRampButtonInteractableState(false);
+			}
 		}
 		
 		/// <summary>
@@ -54,8 +65,13 @@ namespace Managers {
 				return;
 			}
 			this._boostDurationLevel++;
+			this.BoostUpgradesAvailable--;
 			UserSettings.Instance.BoostLevel = this._boostDurationLevel;
 			UIManager.Instance.SetBoostLevel(this._boostDurationLevel);
+			
+			if (this.BoostUpgradesAvailable < 1) {
+				UIManager.Instance.SetUpgradeBoostButtonInteractableState(false);
+			}
 		}
 		
 		#endregion
