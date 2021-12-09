@@ -86,8 +86,12 @@ namespace Managers {
 		/// </summary>
 		public void HideUI() {
 			this._tapToStart.DOFade(0f, 0.5f);
+			
 			this._upgradeRampButton.DOFade(0f, 0.5f);
 			this._upgradeBoostButton.DOFade(0f, 0.5f);
+			
+			this.SetUpgradeRampButtonInteractableState(false);
+			this.SetUpgradeBoostButtonInteractableState(false);
 		}
 
 		/// <summary>
@@ -97,6 +101,25 @@ namespace Managers {
 			this._tapToStart.DOFade(1f, 0.5f);
 			this._upgradeRampButton.DOFade(1f, 0.5f);
 			this._upgradeBoostButton.DOFade(1f, 0.5f);
+			
+			this.SetUpgradeRampButtonInteractableState(true);
+			this.SetUpgradeBoostButtonInteractableState(true);
+		}
+
+		/// <summary>
+		/// Set the interactable state for the upgrade ramp level button.
+		/// </summary>
+		/// <param name="isEnabled">Is interaction enabled?</param>
+		public void SetUpgradeRampButtonInteractableState(bool isEnabled) {
+			this._upgradeRampButton.interactable = isEnabled;
+		}
+		
+		/// <summary>
+		/// Set the interactable state for the upgrade boost level button.
+		/// </summary>
+		/// <param name="isEnabled">Is interaction enabled?</param>
+		public void SetUpgradeBoostButtonInteractableState(bool isEnabled) {
+			this._upgradeBoostButton.interactable = isEnabled;
 		}
 		
 		#endregion
