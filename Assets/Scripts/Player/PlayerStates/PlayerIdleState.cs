@@ -17,10 +17,15 @@ namespace Player.PlayerStates {
 		/// <inheritdoc />
 		public override  void EnterState(PlayerManager player) {
 			this._hasTouchedScreen = false;
+			
 			player.Reset();
+			player.BlendClapAnimation();
+			
 			UIManager.Instance.ShowUI();
 			UIManager.Instance.SetBoostAmount(1f);
-			player.BlendClapAnimation();
+
+			GameManager.Instance.RampUpgradesAvailable++;
+			GameManager.Instance.BoostUpgradesAvailable++;
 		}
 
 		/// <inheritdoc />
