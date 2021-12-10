@@ -14,6 +14,7 @@ namespace Player.PlayerStates {
 	public sealed class PlayerInAirState : BasePlayerState {
 		private float _maxBoostDuration;
 		private float _currentDuration;
+		private bool _isPlayingBoostEffect;
 		
 		/// <inheritdoc />
 		public override void EnterState(PlayerManager player) {
@@ -31,12 +32,19 @@ namespace Player.PlayerStates {
 			
 			if (Input.GetMouseButton(0) && this._currentDuration > 0.0f) {
 				player.Boost();
-				Debug.Log("Boosting");
 				this._currentDuration -= Time.fixedDeltaTime;
 				UIManager.Instance.SetBoostAmount(this._currentDuration / this._maxBoostDuration);
 				CameraFollow.Instace.BoostEffect(true);
+				if (!this._isPlayingBoostEffect) {
+					player.CarManager.StartBoostEffect();
+					this._isPlayingBoostEffect = true;
+				}
 			} else {
 				CameraFollow.Instace.BoostEffect(false);
+				if (this._isPlayingBoostEffect) {
+					player.CarManager.StopBoostEffect();
+					this._isPlayingBoostEffect = false;
+				}
 			}
 		}
 

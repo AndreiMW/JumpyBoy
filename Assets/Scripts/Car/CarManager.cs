@@ -31,6 +31,14 @@ namespace Car {
 		[SerializeField] 
 		private WheelCollider _backRightWheelCollider;
 		
+		[Header("Boost Particle System")]
+		[SerializeField]
+		private ParticleSystem _leftBoost;
+
+		[SerializeField]
+		private ParticleSystem _rightBoost;
+
+
 		#region Lifecycle
 
 		private void FixedUpdate() {
@@ -53,6 +61,22 @@ namespace Car {
 			this._frontRightWheelCollider.motorTorque = value;
 			this._backLeftWheelCollider.motorTorque = value;
 			this._backRightWheelCollider.motorTorque = value;
+		}
+
+		/// <summary>
+		/// Start the particle system boost effect.
+		/// </summary>
+		public void StartBoostEffect() {
+			this._leftBoost.Play();
+			this._rightBoost.Play();
+		}
+
+		/// <summary>
+		/// Stop the particle system boost effect.
+		/// </summary>
+		public void StopBoostEffect() {
+			this._leftBoost.Stop();
+			this._rightBoost.Stop();
 		}
 		
 		#endregion

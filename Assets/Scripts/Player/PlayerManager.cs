@@ -30,8 +30,9 @@ namespace Player {
 
 		[SerializeField]
 		private CarManager _carManager;
+		public CarManager CarManager => this._carManager;
 
-		[SerializeField] 
+		[SerializeField]
 		private Animator _playerAnimator;
 
 		private readonly int _blendSpeedHash = Animator.StringToHash("BlendSpeed");
@@ -141,11 +142,11 @@ namespace Player {
 		}
 
 		public void BlendDrivingAnimation() {
-			DOTween.To(() => this._blendSpeed, value => _blendSpeed = value, 0.5f, 1f);
+			DOTween.To(() => this._blendSpeed, value => this._blendSpeed = value, 0.5f, 1f);
 		}
 		
 		public void BlendCheerAnimation() {
-			DOTween.To(() => _blendSpeed, value => _blendSpeed = value, 1f, 1f);
+			DOTween.To(() => this._blendSpeed, value => this._blendSpeed = value, 1f, 1f);
 		}
 		
 		public void BlendClapAnimation() {
