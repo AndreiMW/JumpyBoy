@@ -43,7 +43,7 @@ namespace Player {
 		
 		#region Lifecycle
 
-		private async void Start() {
+		private void Start() {
 			this._rigidbody = this.GetComponent<Rigidbody>();
 			//get original RigidBody constraints (pre ramp jumping)
 			this._originalConstraints = this._rigidbody.constraints;
