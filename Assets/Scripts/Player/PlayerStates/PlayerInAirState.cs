@@ -34,15 +34,15 @@ namespace Player.PlayerStates {
 				player.Boost();
 				this._currentDuration -= Time.fixedDeltaTime;
 				UIManager.Instance.SetBoostAmount(this._currentDuration / this._maxBoostDuration);
-				CameraFollow.Instace.BoostEffect(true);
 				if (!this._isPlayingBoostEffect) {
 					player.CarManager.StartBoostEffect();
+					CameraBoostEffect.Instace.PlayCameraBoostEffect(80f, 0.25f);
 					this._isPlayingBoostEffect = true;
 				}
 			} else {
-				CameraFollow.Instace.BoostEffect(false);
 				if (this._isPlayingBoostEffect) {
 					player.CarManager.StopBoostEffect();
+					CameraBoostEffect.Instace.PlayCameraBoostEffect(60f, 0.25f);
 					this._isPlayingBoostEffect = false;
 				}
 			}
@@ -54,6 +54,9 @@ namespace Player.PlayerStates {
 		/// <inheritdoc />
 		public override void OnCollisionEnter(Collision other, PlayerManager player) {
 			if (other.collider.CompareTag("Ground")) {
+				player.CarManager.StopBoostEffect();
+				CameraBoostEffect.Instace.PlayCameraBoostEffect(60f, 0.25f);
+				this._isPlayingBoostEffect = false;
 				player.SwitchState(player.LandedState);
 			}
 		}
