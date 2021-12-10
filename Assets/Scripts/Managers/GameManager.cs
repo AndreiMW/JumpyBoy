@@ -34,6 +34,8 @@ namespace Managers {
 		private void Awake() {
 			this._rampBoostLevel = UserSettings.Instance.RampLevel;
 			this._boostDurationLevel = UserSettings.Instance.BoostLevel;
+
+			Application.targetFrameRate = 60;
 		}
 
 		#endregion
