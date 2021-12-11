@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5492848591368413672}
   m_Layer: 0
   m_Name: Ground Section
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3616500149089554017}
   m_Layer: 0
   m_Name: Line
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965835327262002407}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 15}
+  m_LocalPosition: {x: 0, y: 0.01, z: 15}
   m_LocalScale: {x: 10, y: 1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 9012499821516026173}
@@ -121,10 +121,10 @@ GameObject:
   - component: {fileID: 3676115934201644195}
   - component: {fileID: 3676115934201644192}
   - component: {fileID: 3676115934201644193}
-  - component: {fileID: 3676115934201644222}
+  - component: {fileID: 7280448041742626987}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,8 +190,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3676115934201644222
-MeshCollider:
+--- !u!65 &7280448041742626987
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -200,10 +200,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 2
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7365012933804678105
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +214,7 @@ GameObject:
   - component: {fileID: 9012499821516026173}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
