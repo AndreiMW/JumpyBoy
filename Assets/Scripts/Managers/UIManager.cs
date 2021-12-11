@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 
 using UI.RocketBoost;
+using UI.Shop;
 
 namespace Managers {
 	public class UIManager : MonoBehaviour {
@@ -37,7 +38,12 @@ namespace Managers {
 		
 		[SerializeField]
 		private Text _boostLevelText;
-		
+
+		[SerializeField] 
+		private ShopViewController _shopViewController;
+		public ShopViewController ShopViewController => this._shopViewController;
+
+
 		#region Lifecycle
 
 		private void Start() {
@@ -89,6 +95,7 @@ namespace Managers {
 			
 			this._upgradeRampButton.DOFade(0f, 0.5f);
 			this._upgradeBoostButton.DOFade(0f, 0.5f);
+			this.ShopViewController.ShopIconCanvasGroup.DOFade(0f, 0.5f);
 			
 			this.SetUpgradeRampButtonInteractableState(false);
 			this.SetUpgradeBoostButtonInteractableState(false);
@@ -101,6 +108,8 @@ namespace Managers {
 			this._tapToStart.DOFade(1f, 0.5f);
 			this._upgradeRampButton.DOFade(1f, 0.5f);
 			this._upgradeBoostButton.DOFade(1f, 0.5f);
+			
+			this.ShopViewController.ShopIconCanvasGroup.DOFade(1f, 0.5f);
 			
 			this.SetUpgradeRampButtonInteractableState(true);
 			this.SetUpgradeBoostButtonInteractableState(true);

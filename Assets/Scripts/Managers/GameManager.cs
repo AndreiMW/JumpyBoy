@@ -19,12 +19,8 @@ namespace Managers {
 		public Vector3 DistanceStartPosition => this._distanceStartPosition.position;
 
 		[SerializeField] 
-		private ShopViewController _shopController;
-
-		[SerializeField] 
 		private Material _material;
 		
-
 		private int _rampBoostLevel;
 		public int RampBoostLevel => this._rampBoostLevel;
 
@@ -45,7 +41,7 @@ namespace Managers {
 
 			Application.targetFrameRate = 60;
 
-			this._shopController.OnColorBought += color => this._material.color = color;
+			UIManager.Instance.ShopViewController.OnColorBought += color => this._material.color = color;
 		}
 
 		#endregion
