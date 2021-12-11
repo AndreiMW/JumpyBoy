@@ -29,6 +29,9 @@ namespace UI.Shop {
 
 		public event Action<Color> OnColorBought;
 
+		private CanvasGroup _shopIconCanvasGroup;
+		public CanvasGroup ShopIconCanvasGroup => this._shopIconCanvasGroup;
+
 		#region Lifecycle
 		
 		private void Awake() {
@@ -37,6 +40,7 @@ namespace UI.Shop {
 				shopButton.MouseButtonDown.AddListener(this.HandleShopButtonPress);
 			}
 			this._closeButton.onClick.AddListener(this.CloseShop);
+			this._shopIconCanvasGroup = this._openShopButton.GetComponent<CanvasGroup>();
 		}
 		
 		#endregion
