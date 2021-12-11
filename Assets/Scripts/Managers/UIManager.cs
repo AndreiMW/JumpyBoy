@@ -40,6 +40,12 @@ namespace Managers {
 		private Text _boostLevelText;
 
 		[SerializeField] 
+		private CanvasGroup _longestDistanceTextCanvasGroup;
+
+		[SerializeField] 
+		private Text _longestDistanceScoreText;
+
+		[SerializeField] 
 		private ShopViewController _shopViewController;
 		public ShopViewController ShopViewController => this._shopViewController;
 
@@ -95,6 +101,9 @@ namespace Managers {
 			
 			this._upgradeRampButton.DOFade(0f, 0.5f);
 			this._upgradeBoostButton.DOFade(0f, 0.5f);
+			
+			this._longestDistanceTextCanvasGroup.DOFade(0f, 0.5f);
+			
 			this.ShopViewController.ShopIconCanvasGroup.DOFade(0f, 0.5f);
 			
 			this.SetUpgradeRampButtonInteractableState(false);
@@ -108,6 +117,9 @@ namespace Managers {
 			this._tapToStart.DOFade(1f, 0.5f);
 			this._upgradeRampButton.DOFade(1f, 0.5f);
 			this._upgradeBoostButton.DOFade(1f, 0.5f);
+
+			this.SetLongestDistanceText();
+			this._longestDistanceTextCanvasGroup.DOFade(1f, 0.5f);
 			
 			this.ShopViewController.ShopIconCanvasGroup.DOFade(1f, 0.5f);
 			
@@ -129,6 +141,14 @@ namespace Managers {
 		/// <param name="isEnabled">Is interaction enabled?</param>
 		public void SetUpgradeBoostButtonInteractableState(bool isEnabled) {
 			this._upgradeBoostButton.interactable = isEnabled;
+		}
+
+		/// <summary>
+		/// Set the longest distance the user has jumped.
+		/// </summary>
+		/// <param name="score">The user's score.</param>
+		private void SetLongestDistanceText() {
+			this._longestDistanceScoreText.text = UserSettings.Instance.LongestJump.ToString();
 		}
 		
 		#endregion
