@@ -5,8 +5,9 @@
  * Copyright (c) 2021 Andrei-Florin Ciobanu. All rights reserved. 
  */
 
-using System;
 using UnityEngine;
+
+using UI.Shop;
 
 namespace Managers {
 	public class GameManager : MonoBehaviour {
@@ -16,6 +17,13 @@ namespace Managers {
 		[SerializeField] 
 		private Transform _distanceStartPosition;
 		public Vector3 DistanceStartPosition => this._distanceStartPosition.position;
+
+		[SerializeField] 
+		private ShopViewController _shopController;
+
+		[SerializeField] 
+		private Material _material;
+		
 
 		private int _rampBoostLevel;
 		public int RampBoostLevel => this._rampBoostLevel;
@@ -36,6 +44,8 @@ namespace Managers {
 			this._boostDurationLevel = UserSettings.Instance.BoostLevel;
 
 			Application.targetFrameRate = 60;
+
+			this._shopController.OnColorBought += color => this._material.color = color;
 		}
 
 		#endregion
