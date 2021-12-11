@@ -230,7 +230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distanceStartPosition: {fileID: 1594391027}
-  _shopController: {fileID: 159916085}
   _material: {fileID: 2100000, guid: 26b5447738abb5f47b9ca1cb09801ca4, type: 2}
   BoostUpgradesAvailable: 0
   RampUpgradesAvailable: 0
@@ -7979,6 +7978,7 @@ MonoBehaviour:
   _upgradeBoostButton: {fileID: 1239573710}
   _rampLevelText: {fileID: 1037858010}
   _boostLevelText: {fileID: 1611589198}
+  _shopViewController: {fileID: 159916085}
 --- !u!4 &1504502506
 Transform:
   m_ObjectHideFlags: 0
@@ -8731,6 +8731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1796384598}
   - component: {fileID: 1796384599}
+  - component: {fileID: 1796384600}
   m_Layer: 5
   m_Name: ShopButton
   m_TagString: Untagged
@@ -8801,6 +8802,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &1796384600
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796384597}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1805513093
 GameObject:
   m_ObjectHideFlags: 0
