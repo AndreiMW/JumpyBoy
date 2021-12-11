@@ -34,6 +34,8 @@ public class UserSettings {
 		get => this.GetJumps();
 		set => this.SetJumps(value);
 	}
+
+	public bool CanJump = true;
 	
 	#region Private	
 

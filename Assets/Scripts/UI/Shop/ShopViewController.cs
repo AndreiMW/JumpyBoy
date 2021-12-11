@@ -44,6 +44,7 @@ namespace UI.Shop {
 		#region Private
 
 		private void ShowShopView() {
+			UserSettings.Instance.CanJump = false;
 			int currentNumberOfJumps = UserSettings.Instance.NumberOfJumps;
 			foreach (ShopButton shopButton in this._shopButtons) {
 				shopButton.CheckIfEnoughJumps(currentNumberOfJumps);
@@ -59,6 +60,7 @@ namespace UI.Shop {
 		}
 
 		private void CloseShop() {
+			UserSettings.Instance.CanJump = true;
 			this._shopView.transform.DOScale(0f, 0.1f);
 			this._shopView.DOFade(0f, 0.1f);
 		}

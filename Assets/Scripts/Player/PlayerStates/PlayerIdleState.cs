@@ -40,6 +40,9 @@ namespace Player.PlayerStates {
 					return;
 				}
 #endif
+				if (!UserSettings.Instance.CanJump) {
+					return;
+				}
 				this._hasTouchedScreen = true;
 				player.PushPlayerToRamp();
 				player.SwitchState(player.OnRampState);
