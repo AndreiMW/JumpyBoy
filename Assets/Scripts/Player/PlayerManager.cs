@@ -33,15 +33,15 @@ namespace Player {
 		private RigidbodyConstraints _originalConstraints;
 
 		private Vector3 _originalPosition;
+		
+		private AudioSource _audioSource;
 
 		private readonly int _blendSpeedHash = Animator.StringToHash("BlendSpeed");
+
 		private float _blendSpeed {
 			get =>  this._playerAnimator.GetFloat(this._blendSpeedHash);
 			set => this._playerAnimator.SetFloat(this._blendSpeedHash, value);
 		}
-
-		private AudioSource _audioSource;
-
 		public enum HeartBeatStates {
 			Idle = 0,
 			OnRamp = 1,
