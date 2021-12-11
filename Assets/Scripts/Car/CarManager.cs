@@ -5,6 +5,7 @@
  * Copyright (c) 2021 Andrei-Florin Ciobanu. All rights reserved. 
  */
 
+using System;
 using UnityEngine;
 
 namespace Car {
@@ -38,8 +39,14 @@ namespace Car {
 		[SerializeField]
 		private ParticleSystem _rightBoost;
 
+		private AudioSource _audioSource;
+
 
 		#region Lifecycle
+
+		private void Awake() {
+			this._audioSource = this.GetComponent<AudioSource>();
+		}
 
 		private void FixedUpdate() {
 			this._frontLeftWheelTransform.Rotate(this.ComputeWheelRotation(this._frontLeftWheelCollider));
@@ -69,6 +76,8 @@ namespace Car {
 		public void StartBoostEffect() {
 			this._leftBoost.Play();
 			this._rightBoost.Play();
+			
+			this._audioSource.Play();
 		}
 
 		/// <summary>
@@ -77,6 +86,8 @@ namespace Car {
 		public void StopBoostEffect() {
 			this._leftBoost.Stop();
 			this._rightBoost.Stop();
+			
+			this._audioSource.Stop();
 		}
 		
 		#endregion
