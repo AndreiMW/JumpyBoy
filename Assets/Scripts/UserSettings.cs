@@ -35,6 +35,14 @@ public class UserSettings {
 		set => this.SetJumps(value);
 	}
 
+	/// <summary>
+	/// Persisted longest jump.
+	/// </summary>
+	public int LongestJump {
+		get => this.GetLongestJump();
+		set => this.SetLongestJump(value);
+	}
+
 	public bool CanJump = true;
 	
 	#region Private	
@@ -61,6 +69,16 @@ public class UserSettings {
 
 	private void SetJumps(int value) {
 		PlayerPrefs.SetInt("jumps", value);
+	}
+	
+	private int GetLongestJump() {
+		return PlayerPrefs.GetInt("longest_jump", 0);
+	}
+
+	private void SetLongestJump(int value) {
+		if (value > this.GetLongestJump()) {
+			PlayerPrefs.SetInt("longest_jump", value);	
+		}
 	}
 	
 	#endregion
