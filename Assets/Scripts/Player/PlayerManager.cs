@@ -14,36 +14,52 @@ using Player.PlayerStates;
 
 namespace Player {
 	public class PlayerManager : MonoBehaviour {
-		private BasePlayerState _currentState;
-
-		public readonly PlayerIdleState IdleState = new PlayerIdleState();
-		public readonly PlayerOnRampState OnRampState = new PlayerOnRampState();
-		public readonly PlayerInAirState InAirState = new PlayerInAirState();
-		public readonly PlayerLandedState LandedState = new PlayerLandedState();
-
-			
-		private Rigidbody _rigidbody;
-		public Rigidbody Rigidbody => this._rigidbody;
-		private RigidbodyConstraints _originalConstraints;
-
-		private Vector3 _originalPosition;
-
+		[Header("Car Manager")]
 		[SerializeField]
 		private CarManager _carManager;
 		public CarManager CarManager => this._carManager;
-
+		
+		[Header("Driver Animator")]
 		[SerializeField]
 		private Animator _playerAnimator;
+		
+		[Header("Heart beats effect")]
+		[SerializeField] 
+		private AudioClip[] _heartBeatClips;
+		
+		private Rigidbody _rigidbody;
+		public Rigidbody Rigidbody => this._rigidbody;
+		
+		private RigidbodyConstraints _originalConstraints;
+
+		private Vector3 _originalPosition;
 
 		private readonly int _blendSpeedHash = Animator.StringToHash("BlendSpeed");
 		private float _blendSpeed {
 			get =>  this._playerAnimator.GetFloat(this._blendSpeedHash);
 			set => this._playerAnimator.SetFloat(this._blendSpeedHash, value);
 		}
+
+		private AudioSource _audioSource;
+
+		public enum HeartBeatStates {
+			Idle = 0,
+			OnRamp = 1,
+			Boosting = 2
+		}
+		
+		private BasePlayerState _currentState;
+
+		public readonly PlayerIdleState IdleState = new PlayerIdleState();
+		public readonly PlayerOnRampState OnRampState = new PlayerOnRampState();
+		public readonly PlayerInAirState InAirState = new PlayerInAirState();
+		public readonly PlayerLandedState LandedState = new PlayerLandedState();
 		
 		#region Lifecycle
 
 		private void Start() {
+			this._audioSource = this.GetComponent<AudioSource>();
+			
 			this._rigidbody = this.GetComponent<Rigidbody>();
 			//get original RigidBody constraints (pre ramp jumping)
 			this._originalConstraints = this._rigidbody.constraints;
@@ -141,16 +157,42 @@ namespace Player {
 			this._carManager.SetMotorTorqueValue(0f);
 		}
 
+		/// <summary>
+		/// Blend to driving animation.
+		/// </summary>
 		public void BlendDrivingAnimation() {
 			DOTween.To(() => this._blendSpeed, value => this._blendSpeed = value, 0.5f, 1f);
 		}
 		
+		/// <summary>
+		/// Blend to cheer animation.
+		/// </summary>
 		public void BlendCheerAnimation() {
 			DOTween.To(() => this._blendSpeed, value => this._blendSpeed = value, 1f, 1f);
 		}
 		
+		/// <summary>
+		/// Blend to clap animation.
+		/// </summary>
 		public void BlendClapAnimation() {
 			this._blendSpeed = 0f;
+		}
+
+		/// <summary>
+		/// Set the heart beat sound effect.
+		/// </summary>
+		/// <param name="state">The state of the heart beat audio source.</param>
+		public void SetHeartBeatAudioClip(HeartBeatStates state) {
+			this.StopHeartBeatAudioSource();
+			this._audioSource.clip = this._heartBeatClips[(int) state];
+			this._audioSource.Play();
+		}
+
+		/// <summary>
+		/// Stop the heart beat sound effect.
+		/// </summary>
+		public void StopHeartBeatAudioSource() {
+			this._audioSource.Stop();
 		}
 
 		#endregion

@@ -20,6 +20,7 @@ namespace Player.PlayerStates {
 			
 			player.Reset();
 			player.BlendClapAnimation();
+			player.SetHeartBeatAudioClip(PlayerManager.HeartBeatStates.Idle);
 			
 			UIManager.Instance.ShowUI();
 			UIManager.Instance.SetBoostAmount(1f);

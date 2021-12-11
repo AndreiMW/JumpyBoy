@@ -19,6 +19,7 @@ namespace Player.PlayerStates {
 			this._rampLevel = GameManager.Instance.RampBoostLevel;
 			UIManager.Instance.HideUI();
 			player.BlendDrivingAnimation();
+			player.SetHeartBeatAudioClip(PlayerManager.HeartBeatStates.OnRamp);
 		}
 
 		/// <inheritdoc />
@@ -35,11 +36,13 @@ namespace Player.PlayerStates {
 		public override void OnTriggerEnter(Collider other, PlayerManager player) {
 			if (other.CompareTag("RampEnd")) {
 				this._shouldBoost = false;
+				player.StopHeartBeatAudioSource();
 				player.SwitchState(player.InAirState);
 			}
 
 			if (other.CompareTag("RampBoost")) {
 				this._shouldBoost = true;
+				player.SetHeartBeatAudioClip(PlayerManager.HeartBeatStates.Boosting);
 			}
 		}
 
