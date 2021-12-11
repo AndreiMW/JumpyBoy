@@ -26,8 +26,10 @@ namespace Player.PlayerStates {
 
 		/// <inheritdoc />
 		public override void FixedUpdateState(PlayerManager player) {
-			UIManager.Instance.SetDistanceScore(player.transform.position.CalculateDistanceTo(GameManager.Instance.DistanceStartPosition));
+			float distance = player.transform.position.CalculateDistanceTo(GameManager.Instance.DistanceStartPosition);
+			UIManager.Instance.SetDistanceScore(distance);
 			if (player.Rigidbody.velocity.z <= 0.5f) {
+				UserSettings.Instance.LongestJump = (int) distance;
 				player.SwitchState(player.IdleState);
 			}
 		}
