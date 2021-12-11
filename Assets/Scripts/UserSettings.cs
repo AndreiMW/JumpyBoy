@@ -26,6 +26,14 @@ public class UserSettings {
 		get => this.GetBoostLevel();
 		set => this.SetBoostLevel(value);
 	}
+
+	/// <summary>
+	/// Persisted number of jumps.
+	/// </summary>
+	public int NumberOfJumps {
+		get => this.GetJumps();
+		set => this.SetJumps(value);
+	}
 	
 	#region Private	
 
@@ -43,6 +51,14 @@ public class UserSettings {
 
 	private void SetBoostLevel(int value) {
 		PlayerPrefs.SetInt("boost_level", value);
+	}
+	
+	private int GetJumps() {
+		return PlayerPrefs.GetInt("jumps", 0);
+	}
+
+	private void SetJumps(int value) {
+		PlayerPrefs.SetInt("jumps", value);
 	}
 	
 	#endregion
