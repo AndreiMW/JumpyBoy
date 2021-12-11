@@ -18,6 +18,7 @@ namespace Player.PlayerStates {
 			player.ResetConstraints();
 			player.Slow();
 			player.BlendCheerAnimation();
+			UserSettings.Instance.NumberOfJumps++;
 		}
 
 		/// <inheritdoc />
