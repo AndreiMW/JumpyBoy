@@ -7,8 +7,6 @@
 
 using UnityEngine;
 
-using UI.Shop;
-
 namespace Managers {
 	public class GameManager : MonoBehaviour {
 		private static GameManager s_instace;
@@ -42,6 +40,10 @@ namespace Managers {
 			Application.targetFrameRate = 60;
 
 			UIManager.Instance.ShopViewController.OnColorBought += color => this._material.color = color;
+		}
+
+		private void OnDestroy() {
+			s_instace = null;
 		}
 
 		#endregion

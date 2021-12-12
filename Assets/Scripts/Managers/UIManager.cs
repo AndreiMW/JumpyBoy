@@ -66,7 +66,11 @@ namespace Managers {
 			this.SetRampLevel(UserSettings.Instance.RampLevel);
 			this.SetBoostLevel(UserSettings.Instance.BoostLevel);
 		}
-		
+
+		private void OnDestroy() {
+			s_instace = null;
+		}
+
 		#endregion
 
 		#region Public

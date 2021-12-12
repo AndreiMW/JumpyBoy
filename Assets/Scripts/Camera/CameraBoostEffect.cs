@@ -5,8 +5,9 @@
  * Copyright (c) 2021 Andrei-Florin Ciobanu. All rights reserved. 
  */
 
-using DG.Tweening;
 using UnityEngine;
+
+using DG.Tweening;
 
 public class CameraBoostEffect : MonoBehaviour {
 	private static CameraBoostEffect s_instace;
@@ -18,6 +19,10 @@ public class CameraBoostEffect : MonoBehaviour {
 
 	private void Awake() {
 		this._camera = Camera.main;
+	}
+
+	private void OnDestroy() {
+		s_instace = null;
 	}
 
 	#endregion
