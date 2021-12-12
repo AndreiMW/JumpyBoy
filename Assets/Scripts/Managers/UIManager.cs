@@ -18,33 +18,43 @@ namespace Managers {
 		private static UIManager s_instace;
 		public static UIManager Instance => s_instace ?? (s_instace = FindObjectOfType<UIManager>());
 
+		[Header("Rocket boost duration view")]
 		[SerializeField] 
 		private RocketBoostView _rocketBoostView;
 
+		[Header("Score text")]
 		[SerializeField] 
 		private Text _scoreText;
 
+		[Header("Tap to start view")]
 		[SerializeField]
 		private CanvasGroup _tapToStart;
 
+		[Header("Upgrade ramp speed level button")]
 		[SerializeField] 
 		private CanvasGroup _upgradeRampButton;
 		
+		[Header("Upgrade boost duration level button")]
 		[SerializeField]
 		private CanvasGroup _upgradeBoostButton;
 		
+		[Header("Ramp level button text")]
 		[SerializeField]
 		private Text _rampLevelText;
 		
+		[Header("Boost level button text")]
 		[SerializeField]
 		private Text _boostLevelText;
 
+		[Header("Longest distance view")]
 		[SerializeField] 
 		private CanvasGroup _longestDistanceTextCanvasGroup;
 
+		[Header("Longest distance score text")]
 		[SerializeField] 
 		private Text _longestDistanceScoreText;
 
+		[Header("Shop controller")]
 		[SerializeField] 
 		private ShopViewController _shopViewController;
 		public ShopViewController ShopViewController => this._shopViewController;
