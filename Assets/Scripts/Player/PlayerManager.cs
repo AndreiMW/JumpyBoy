@@ -22,11 +22,7 @@ namespace Player {
 		[Header("Driver Animator")]
 		[SerializeField]
 		private Animator _playerAnimator;
-		
-		[Header("Heart beats effect")]
-		[SerializeField] 
-		private AudioClip[] _heartBeatClips;
-		
+
 		private Rigidbody _rigidbody;
 		public Rigidbody Rigidbody => this._rigidbody;
 		
@@ -42,12 +38,7 @@ namespace Player {
 			get =>  this._playerAnimator.GetFloat(this._blendSpeedHash);
 			set => this._playerAnimator.SetFloat(this._blendSpeedHash, value);
 		}
-		public enum HeartBeatStates {
-			Idle = 0,
-			OnRamp = 1,
-			Boosting = 2
-		}
-		
+
 		private BasePlayerState _currentState;
 
 		public readonly PlayerIdleState IdleState = new PlayerIdleState();
@@ -176,23 +167,6 @@ namespace Player {
 		/// </summary>
 		public void BlendClapAnimation() {
 			this._blendSpeed = 0f;
-		}
-
-		/// <summary>
-		/// Set the heart beat sound effect.
-		/// </summary>
-		/// <param name="state">The state of the heart beat audio source.</param>
-		public void SetHeartBeatAudioClip(HeartBeatStates state) {
-			this.StopHeartBeatAudioSource();
-			this._audioSource.clip = this._heartBeatClips[(int) state];
-			this._audioSource.Play();
-		}
-
-		/// <summary>
-		/// Stop the heart beat sound effect.
-		/// </summary>
-		public void StopHeartBeatAudioSource() {
-			this._audioSource.Stop();
 		}
 
 		#endregion
