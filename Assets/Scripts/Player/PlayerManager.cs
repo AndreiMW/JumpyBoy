@@ -169,6 +169,26 @@ namespace Player {
 			this._blendSpeed = 0f;
 		}
 
+		/// <summary>
+		/// Play wind sound effect.
+		/// </summary>
+		public void PlayWindSoundEffect() {
+			this._audioSource.Play();
+		}
+
+		/// <summary>
+		/// Stop wind sound effect.
+		/// </summary>
+		public void StopWindSoundEffect() {
+			float volume = this._audioSource.volume;
+			DOTween.To(() => volume, volumeSetter => this._audioSource.volume = volumeSetter, 0f, 2f).OnComplete(VolumeEndCallback);
+
+			void VolumeEndCallback() {
+				this._audioSource.Stop();
+				this._audioSource.volume = volume;
+			}
+		}
+
 		#endregion
 	}
 }

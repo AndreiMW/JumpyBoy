@@ -19,6 +19,7 @@ namespace Player.PlayerStates {
 		/// <inheritdoc />
 		public override void EnterState(PlayerManager player) {
 			player.SetInAirConstraints();
+			player.PlayWindSoundEffect();
 			this._maxBoostDuration = GameManager.Instance.BoostDurationLevel / 2f;
 			this._currentDuration = this._maxBoostDuration;
 		}
